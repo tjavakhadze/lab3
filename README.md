@@ -33,19 +33,15 @@ lab3/
 │
 ├─ audio_samples/
 │   ├─ test_audio.mp3  # Example audio input
-│   └─ other_test_audios/
+│   └─ other_test_audios
 │
 ├─ scripts/
 │   ├─ 1_basic_stt.py
 │   ├─ 2_confidence_scoring.py
 │   ├─ 3_pii_redaction.py
-│   ├─ 4_tss_summary.py
-│   ├─ utils_audio.py
-│   ├─ utils_pii.py
-│   └─ verify.py
+│   └─ 4_tss_summary.py
 │
-├─ tools/
-│   └─ make_submission_zip.py
+│
 │
 ├─ venv/               # Python virtual environment
 ├─ audio_pipeline.py    # Main pipeline script
@@ -113,6 +109,7 @@ python audio_pipeline.py
 **gTTS Documentation**
 
 ---
+
 
 
 
