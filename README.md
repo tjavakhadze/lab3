@@ -85,6 +85,35 @@ SUMMARY_SENTENCES=2
 
 ---
 
+## Execution
+
+Run the pipeline:
+
+```bash
+python audio_pipeline.py
+```
+---
+## Outputs
+
+### output_transcript.txt → Redacted transcript
+
+### output_summary.mp3 → Audio summary
+
+### audit.log → JSON audit log of processing metrics
+
+---
+## References
+
+**pydub Documentation**
+
+**SpeechRecognition Documentation**
+
+**spaCy Documentation**
+
+**gTTS Documentation**
+
+---
+
 
 
 
