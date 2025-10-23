@@ -76,7 +76,6 @@ source venv/bin/activate
 # Install requirements
 pip install -r requirements.txt
 
----
 
 ## Copy .env.example to .env and modify:
 
@@ -84,6 +83,7 @@ INPUT_AUDIO=audio_samples/test_audio.mp3
 VOICE_NAME=en-US-Neural2-A
 SUMMARY_SENTENCES=2
 ---
+
 
 
 
