@@ -1,80 +1,89 @@
-Lab 3: Speech Processing Scripts
+# Lab 3 – Audio AI Pipeline
 
-This repository contains Python scripts demonstrating audio processing with Google Cloud Speech-to-Text and Text-to-Speech APIs.
+**Course:** Building AI powered applications  
+**Student:** Tinatin Javakhadze
 
-Prerequisites
+---
 
-Clone the repository and navigate to it:
+## Overview
 
-git clone <repo-url>
+This project implements an end-to-end **Audio AI Pipeline** that processes speech recordings to generate redacted transcripts, audio summaries, and audit logs. The pipeline demonstrates practical applications of audio preprocessing, speech-to-text transcription, confidence scoring, named entity recognition, PII redaction, and text-to-speech synthesis.
+
+The goal of this assignment was to design a modular, robust, and reproducible pipeline that could operate using free or offline resources while handling real-world challenges such as transcription error and sensitive information in audio recordings.
+
+---
+
+## Functional Requirements Addressed
+
+1. **Input Handling:** Accepts audio files in multiple formats (MP3, WAV, AIFF).
+2. **Preprocessing:** Prepares audio for processing.
+3. **Speech-to-Text:** Uses Google Web Speech API with retry logic, with offline Sphinx as a fallback.
+4. **Confidence Scoring:** Computes a **multi-factor confidence score** using API confidence, signal-to-noise ratio (SNR), and perplexity.
+5. **PII Redaction:** Redacts sensitive information using **regex patterns** (emails, phone numbers, credit cards...) and **spaCy NER** (names).
+6. **Summarization:** Extractive summarization produces a concise textual summary.
+7. **Text-to-Speech:** Generates an audio summary via gTTS.
+8. **Audit Logging:** Produces a structured JSON audit log containing metrics such as confidence, SNR, number of redactions, and summary length.
+9. **Error Handling:** Includes input validation, retry logic, and clear messages for transcription failures or missing files.
+
+---
+
+## Project Structure
+
+lab3/
+│
+├─ audio_samples/
+│ └─ test_audio.mp3 # Example audio input
+│ └─ other test audios
+│
+├─ scripts/
+│ ├─ 1_basic_stt.py
+│ ├─ 2_confidence_scoring.py
+│ ├─ 3_pii_redaction.py
+│ ├─ 4_tss_summary.py
+│ ├─ utils_audio.py
+│ ├─ utils_pii.py
+│ └─ verify.py
+│
+├─ tools/
+│ └─ make_submission_zip.py
+│
+├─ venv/ # Python virtual environment
+├─ audio_pipeline.py # Main pipeline script
+├─ requirements.txt
+├─ .env.example
+├─ LAB-3-HOMEWORK.md (reflection)
+└─ README.md
+
+
+---
+## Create and activate a virtual environment:
+
+python -m venv venv
+# Windows
+venv\Scripts\activate
+# macOS/Linux
+source venv/bin/activate
+
+
+pip install -r requirements.txt
+
+---
+
+Copy .env.example to .env and modify:
+
+INPUT_AUDIO=audio_samples/test_audio.mp3
+VOICE_NAME=en-US-Neural2-A
+SUMMARY_SENTENCES=2
+---
+
+
+## Setup Instructions
+
+1. **Clone the repository:**
+
+```bash
+git clone [repo URL]
 cd lab3
 
 
-Set up a virtual environment and install dependencies:
 
-python -m venv .venv
-.venv\Scripts\Activate.ps1    # Windows PowerShell
-pip install -r requirements.txt
-
-
-Google Cloud setup
-
-Obtain a service account JSON key from your Google Cloud project.
-
-Enable required APIs:
-
-Cloud Speech-to-Text API
-
-Cloud Text-to-Speech API
-
-Set the environment variable for authentication:
-
-$env:GOOGLE_APPLICATION_CREDENTIALS="C:\path\to\your\service-account-key.json"
-
-
-Replace the path with your own JSON key.
-
-Scripts Usage
-1. Basic Speech-to-Text
-python scripts\1_basic_stt.py audio_samples\test_audio.mp3
-
-
-Transcribes the audio file.
-
-Prints transcript, confidence, and word-level timings.
-
-2. Confidence Scoring
-python scripts\2_confidence_scoring.py audio_samples\test_audio.mp3
-
-
-Computes detailed confidence scores for each word.
-
-Helps analyze transcription reliability.
-
-3. PII Redaction
-python scripts\3_pii_redaction.py audio_samples\test_audio.mp3
-
-
-Detects and redacts personally identifiable information (PII) from transcripts.
-
-Useful for anonymizing sensitive data.
-
-4. STT → Summarize → TTS Pipeline
-python scripts\4_tts_summary.py audio_samples\test_audio.mp3
-
-
-Transcribes the audio.
-
-Summarizes the transcript (extractive summary).
-
-Generates a spoken summary audio file (output_summary.mp3).
-
-Notes
-
-Ensure the audio file is in audio_samples/ or provide the full path.
-
-
-
-Run the script with an audio file
-
-python scripts\1_basic_stt.py audio_samples\test_audio.mp3
