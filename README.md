@@ -28,7 +28,7 @@ The goal of this assignment was to design a modular, robust, and reproducible pi
 ---
 
 ## Project Structure
-
+```text
 lab3/
 │
 ├─ audio_samples/
@@ -53,18 +53,27 @@ lab3/
 ├─ .env.example
 ├─ LAB-3-HOMEWORK.md   # reflection
 └─ README.md
+```
+## Setup Instructions
 
+1. **Clone the repository:**
 
+```bash
+git clone [repo URL]
+cd lab3
+```
 ---
 ## Create and activate a virtual environment:
 
 python -m venv venv
 # Windows
 venv\Scripts\activate
+
 # macOS/Linux
 source venv/bin/activate
 
 
+# Install requirements
 pip install -r requirements.txt
 
 ---
@@ -77,13 +86,8 @@ SUMMARY_SENTENCES=2
 ---
 
 
-## Setup Instructions
 
-1. **Clone the repository:**
 
-```bash
-git clone [repo URL]
-cd lab3
 
 
 
