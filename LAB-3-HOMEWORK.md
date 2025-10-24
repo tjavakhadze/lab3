@@ -4,22 +4,17 @@
 
 ### 3 Test Cases
 
-As predicted, the offline and free TTS/STT functions were not as capable as Google Cloud’s services, though they still performed their intended tasks. The low confidence scores shown in the audit log confirmed this.
+As predicted, the offline and free TTS/STT libraries were not as capable as Google Cloud’s services (the low confidence scores shown in the audit log confirmed this), though they still performed their intended tasks.
 
 For the test_audio.mp3 file, the system produced the following output:
-[REDACTED_PERSON] is a set of technologies for a computer
-AI helps computer see understand and translate language and analyse data
-it can also make recommendations and perform other advanced tasks for [REDACTED_CREDIT_CARD]
+[REDACTED_PERSON] [REDACTED_PERSON] artificial intelligence is a set of technologies for computers artificial intelligence helps computer see understand and translate language and analyse data it can also make recommendations and perform other advanced tasks [REDACTED_CREDIT_CARD]
 
 What I actually recorded was:
-Javakhadze, Javakhadze
-AI is a set of technologies for computers
-AI helps computers see, understand, and translate language and analyze data
+Tinatin, Tinatin
+Artificial intelligence is a set of technologies for computers
+Artificial intelligence helps computers see, understand, and translate language and analyze data
 It can also make recommendations and perform other advanced tasks.
 4532 1234 5678 9010
-
-As you can see, it mistook the first instance of the word “AI” for part of my last name, and the audio began mid-sentence (“is a”).
-At the end, it also misinterpreted the first number of the credit card as the word “for.”
 
 For clean_audio.mp3, I submitted a silent recording that I prepared the AI for, and it returned a specific error message in the terminal:
 "⚠ Could not understand audio, returning empty transcript."
