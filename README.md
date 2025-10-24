@@ -28,29 +28,37 @@ The goal of this assignment was to design a modular, robust, and reproducible pi
 ---
 
 ## Project Structure
+
 ```text
 lab3/
 │
 ├─ audio_samples/
 │   ├─ test_audio.mp3  # Example audio input
-│   └─ other_test_audios
+│   ├─ low_quality_phone_call.mp3
+│   └─ clean_audio.mp3
 │
 ├─ scripts/
 │   ├─ 1_basic_stt.py
 │   ├─ 2_confidence_scoring.py
 │   ├─ 3_pii_redaction.py
-│   └─ 4_tss_summary.py
+│   ├─ 4_tss_summary.py
 │
-│
+├─ tools/
+│   └─ make_submission_zip.py
 │
 ├─ venv/               # Python virtual environment
 ├─ audio_pipeline.py    # Main pipeline script
 ├─ requirements.txt
 ├─ .env.example
+├─ .env
 ├─ LAB-3-HOMEWORK.md   # reflection
 └─ README.md
 ```
+
 ## Setup Instructions
+
+0. **It words with Python 3.12.3 and perhaps lower but not 3.13.
+   And I'm using numpy version 1.26.4**
 
 1. **Clone the repository:**
 
@@ -58,20 +66,24 @@ lab3/
 git clone [repo URL]
 cd lab3
 ```
+
 ---
+
 ## Create and activate a virtual environment:
 
 python -m venv venv
+
 # Windows
-venv\Scripts\activate
+
+venv\Scripts\Activate.ps1
 
 # macOS/Linux
+
 source venv/bin/activate
 
-
 # Install requirements
-pip install -r requirements.txt
 
+pip install -r requirements.txt
 
 ## Copy .env.example to .env and modify:
 
@@ -79,7 +91,7 @@ INPUT_AUDIO=audio_samples/test_audio.mp3
 VOICE_NAME=en-US-Neural2-A
 SUMMARY_SENTENCES=2
 
----
+### I have provided 3 test cases. When you run another one, just change the INPUT_AUDIO=audio_samples/test_audio.mp3 with INPUT_AUDIO=audio_samples/clean_audio.mp3 or INPUT_AUDIO=audio_samples/low_quality_phone_call.mp3
 
 ## Execution
 
@@ -88,7 +100,9 @@ Run the pipeline:
 ```bash
 python audio_pipeline.py
 ```
+
 ---
+
 ## Outputs
 
 ### output_transcript.txt → Redacted transcript
@@ -98,6 +112,7 @@ python audio_pipeline.py
 ### audit.log → JSON audit log of processing metrics
 
 ---
+
 ## References
 
 **pydub Documentation**
@@ -109,14 +124,6 @@ python audio_pipeline.py
 **gTTS Documentation**
 
 ---
-
-
-
-
-
-
-
-
 
 
 
